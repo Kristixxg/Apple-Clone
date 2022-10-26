@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { MagnifyingGlassIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
-
+import {
+  MagnifyingGlassIcon,
+  ShoppingBagIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 
 function Header() {
-
-    const session = false;
-
+  const session = false;
 
   return (
     <header className="sticky top-0 z-30 flex w-full items-center justify-between bg-[#e7ecee] p-4">
@@ -31,20 +32,29 @@ function Header() {
       <div className="flex items-center justify-center gap-x-4 md:w-1/5">
         <MagnifyingGlassIcon className="headerIcon" />
         <Link href="/checkout">
-        <div className="relative cursor-pointer">
-          <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-t from-pink-500 to-violet-500 text-[10px] text-white">
-            5
-          </span>
-          <ShoppingBagIcon className="headerIcon"/>
-        </div>
+          <div className="relative cursor-pointer">
+            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-t from-pink-500 to-violet-500 text-[10px] text-white">
+              5
+            </span>
+            <ShoppingBagIcon className="headerIcon" />
+          </div>
         </Link>
 
-        {session? (
-            <Image src="" alt="" className="cursor-pointer rounded-full" width={34} height={34} />
-        ): (
-            <UserIcon className="headerIcon"></UserIcon>
+        {session ? (
+          <Image
+            src=""
+            alt=""
+            className="cursor-pointer rounded-full"
+            width={34}
+            height={34}
+              // onClick={() => signOut()}
+          />
+        ) : (
+          <UserIcon
+            className="headerIcon"
+            // onClick={() => signin()}
+          ></UserIcon>
         )}
-       
       </div>
     </header>
   );
