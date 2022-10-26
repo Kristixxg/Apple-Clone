@@ -7,9 +7,9 @@ import Landing from "../components/Landing";
 import { getSession } from "next-auth/react";
 import type { Session } from "next-auth";
 
-interface Props {
-  session: Session | null;
-}
+// interface Props {
+//   session: Session | null;
+// }
 
 const Home: NextPage = () => {
   return (
@@ -36,14 +36,14 @@ const Home: NextPage = () => {
 export default Home;
 
 // backend Code
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
-  const session = await getSession(context);
+// export const getServerSideProps: GetServerSideProps<Props> = async (
+//   context
+// ) => {
+//   const session = await getSession(context);
 
-  return {
-    props: {
-      session,
-    },
-  };
-};
+//   return {
+//     props: {
+//       session,
+//     },
+//   };
+// };
