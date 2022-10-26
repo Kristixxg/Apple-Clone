@@ -4,6 +4,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
 import Landing from "../components/Landing";
+import { getSession } from "next-auth/react";
+import type { Session } from "next-auth";
+
+interface Props {
+  session: Session | null;
+}
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -28,9 +35,15 @@ const Home: NextPage = () => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  // const categories = await fetchCategories();
+// backend Code
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
+  const session = await getSession(context);
+
   return {
-    props: {},
+    props: {
+      session,
+    },
   };
 };
