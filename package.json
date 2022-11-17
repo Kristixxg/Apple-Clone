@@ -6,13 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.3",
+    "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.11",
+    "@portabletext/react": "^2.0.0",
+    "@reduxjs/toolkit": "^1.9.0",
+    "@sanity/image-url": "^1.0.1",
     "next": "latest",
     "next-auth": "^4.15.0",
+    "next-sanity": "^1.0.9",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-hot-toast": "^2.4.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
