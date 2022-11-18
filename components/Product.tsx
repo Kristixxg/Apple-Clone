@@ -11,6 +11,7 @@ type Props = {
 };
 
 function Product({ product }: Props) {
+  console.log(product)
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
