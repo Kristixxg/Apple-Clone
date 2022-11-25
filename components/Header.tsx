@@ -8,9 +8,10 @@ import {
 } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../redux/basketSlice";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
-  const session = false;
+  const { data: session } = useSession();
   const items = useSelector(selectBasketItems);
 
   return (
@@ -22,6 +23,7 @@ function Header() {
               src="https://rb.gy/vsvv2o"
               layout="fill"
               objectFit="contain"
+              alt=""
             ></Image>
           </div>
         </Link>
@@ -45,18 +47,15 @@ function Header() {
 
         {session ? (
           <Image
-            src=""
+            src={session.user?.image || ""}
             alt=""
             className="cursor-pointer rounded-full"
             width={34}
             height={34}
-            // onClick={() => signOut()}
+            onClick={() => signOut()}
           />
         ) : (
-          <UserIcon
-            className="headerIcon"
-            // onClick={() => signin()}
-          ></UserIcon>
+          <UserIcon className="headerIcon" onClick={() => signIn()}></UserIcon>
         )}
       </div>
     </header>

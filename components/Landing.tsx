@@ -20,7 +20,7 @@ function Landing() {
         </div>
       </div>
       <div className="relative hidden h-[450px] w-[450px] transition-all duration-500 md:inline lg:h-[650] lg:w-[600px] ">
-        <Image src="/iphone.png" layout="fill" objectFit="contain" />
+        <Image alt="" src="/iphone.png" layout="fill" objectFit="contain" />
       </div>
     </section>
   );
