@@ -28,6 +28,7 @@ function CheckoutProduct({ items, id }: Props) {
           src={urlFor(items[0].image[0]).url()}
           layout="fill"
           objectFit="contain"
+          alt=""
         />
       </div>
       <div className="flex flex-1 items-end lg:items-center">

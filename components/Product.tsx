@@ -11,7 +11,7 @@ type Props = {
 };
 
 function Product({ product }: Props) {
-  console.log(product)
+  console.log(product);
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
@@ -29,6 +29,7 @@ function Product({ product }: Props) {
           src={urlFor(product.image[0]).url()}
           layout="fill"
           objectFit="contain"
+          alt=""
         />
       </div>
       <div className="flex flex-1 items-center justify-between space-x-3">
