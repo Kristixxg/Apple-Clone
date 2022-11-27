@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Stripe from "stripe";
 import Button from "../components/Button";
-// import CheckoutProduct from "../components/CheckoutProduct";
 import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import { fetchPostJSON } from "../utils/api-helpers";
@@ -96,7 +95,8 @@ function Checkout() {
                 <div className="pb-4">
                   <div className="flex justify-between">
                     <p>Subtotal</p>
-                    <p>${basketTotal}
+                    <p>
+                      ${basketTotal}
                       {/* <Currency quantity={basketTotal} currency="USD" /> */}
                     </p>
                   </div>
@@ -118,7 +118,9 @@ function Checkout() {
 
                 <div className="flex justify-between pt-4 text-xl font-semibold">
                   <h4>Total</h4>
-                  <h4> ${basketTotal}
+                  <h4>
+                    {" "}
+                    ${basketTotal}
                     {/* <Currency quantity={basketTotal} currency="USD" /> */}
                   </h4>
                 </div>
@@ -147,7 +149,9 @@ function Checkout() {
                   <div className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-200 p-8 py-12 md:order-2">
                     <h4 className="mb-4 flex flex-col text-xl font-semibold">
                       Pay in full
-                      <span> ${basketTotal}
+                      <span>
+                        {" "}
+                        ${basketTotal}
                         {/* <Currency quantity={basketTotal} currency="USD" /> */}
                       </span>
                     </h4>

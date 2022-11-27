@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { stringify } from "querystring";
 
 export interface BasketState {
   items: Product[];
@@ -16,10 +15,6 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state: BasketState, action: PayloadAction<Product>) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.items = [...state.items, action.payload];
     },
     removeFromBasket: (
@@ -29,12 +24,17 @@ export const basketSlice = createSlice({
       const index = state.items.findIndex(
         (item: Product) => item._id === action.payload.id
       );
+
       let newBasket = [...state.items];
+
       if (index >= 0) {
         newBasket.splice(index, 1);
       } else {
-        console.log(`Cant remove product (id: ${action.payload.id})`);
+        console.log(
+          `Cant remove product (id: ${action.payload.id}) as its not in basket!`
+        );
       }
+
       state.items = newBasket;
     },
   },
@@ -43,9 +43,9 @@ export const basketSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addToBasket, removeFromBasket } = basketSlice.actions;
 
-//selectors - for retrieving items in state to use in different components
+// Selectors -> retrieving items in state to use in different components
 export const selectBasketItems = (state: RootState) => state.basket.items;
-export const selectBasketItemWithID = (state: RootState, id: string) => {
+export const selectBasketItemsWithId = (state: RootState, id: string) => {
   state.basket.items.filter((item: Product) => item._id === id);
 };
 export const selectBasketTotal = (state: RootState) =>
