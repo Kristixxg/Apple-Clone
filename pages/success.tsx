@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Currency from "react-currency-formatter";
+// import Currency from "react-currency-formatter";
 import { useMediaQuery } from "react-responsive";
 import Button from "../components/Button";
 import { fetchLineItems } from "../utils/fetchLineItems";
@@ -147,7 +147,8 @@ function Success({ products }: Props) {
                 </button>
 
                 <p className="text-xl font-medium text-black">
-                  <Currency quantity={subtotal + 20} />
+                  ${subtotal + 20}
+                  {/* <Currency quantity={subtotal + 20} /> */}
                 </p>
               </div>
             </div>
@@ -175,9 +176,10 @@ function Success({ products }: Props) {
                       </div>
                       <p className="flex-1">{product.description}</p>
                       <p>
-                        <Currency
+                        ${product.price.unit_amount / 100}
+                        {/* <Currency
                           quantity={product.price.unit_amount / 100}
-                          currency={product.currency}
+                          currency={product.currency} */}
                         />
                       </p>
                     </div>
@@ -187,7 +189,8 @@ function Success({ products }: Props) {
                   <div className="flex justify-between text-sm">
                     <p className="text-[gray]">Subtotal</p>
                     <p className="font-medium">
-                      <Currency quantity={subtotal} />
+                      ${subtotal}
+                      {/* <Currency quantity={subtotal} /> */}
                     </p>
                   </div>
                   <div className="flex justify-between text-sm">
@@ -197,7 +200,8 @@ function Success({ products }: Props) {
                   <div className="flex justify-between text-sm">
                     <p className="text-[gray]">Shipping</p>
                     <p className="font-medium">
-                      <Currency quantity={20} currency="USD" />
+                      $20
+                      {/* <Currency quantity={20} currency="USD" /> */}
                     </p>
                   </div>
                 </div>
@@ -206,7 +210,8 @@ function Success({ products }: Props) {
                   <p className="flex items-center gap-x-2 text-xs text-[gray]">
                     USD
                     <span className="text-xl font-medium text-black">
-                      <Currency quantity={subtotal + 20} />
+                      ${subtotal + 20}
+                      {/* <Currency quantity={subtotal + 20} /> */}
                     </span>
                   </p>
                 </div>
