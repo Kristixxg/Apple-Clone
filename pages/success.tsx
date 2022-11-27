@@ -179,8 +179,8 @@ function Success({ products }: Props) {
                         ${product.price.unit_amount / 100}
                         {/* <Currency
                           quantity={product.price.unit_amount / 100}
-                          currency={product.currency} */}
-                        />
+                          currency={product.currency}
+                        /> */}
                       </p>
                     </div>
                   ))}
