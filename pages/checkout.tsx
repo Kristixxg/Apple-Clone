@@ -1,26 +1,34 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-
-import { useSelector } from "react-redux";
-import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
-import { useRouter } from "next/router";
-import Button from "../components/Button";
-import CheckoutProduct from "../components/CheckoutProduct";
-// import Currency from "react-currency-formatter";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Stripe from "stripe";
+import Button from "../components/Button";
+// import CheckoutProduct from "../components/CheckoutProduct";
+import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
+import CheckoutProduct from "../components/CheckoutProduct";
 import { fetchPostJSON } from "../utils/api-helpers";
 import getStripe from "../utils/get-stripejs";
 
-function checkout() {
+function Checkout() {
   const items = useSelector(selectBasketItems);
+  const basketTotal = useSelector(selectBasketTotal);
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState(
     {} as { [key: string]: Product[] }
   );
-  const basketTotal = useSelector(selectBasketTotal);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const groupedItems = items.reduce((results, item) => {
+      (results[item._id] = results[item._id] || []).push(item);
+      return results;
+    }, {} as { [key: string]: Product[] });
+
+    setGroupedItemsInBasket(groupedItems);
+  }, [items]);
 
   const createCheckoutSession = async () => {
     setLoading(true);
@@ -32,13 +40,13 @@ function checkout() {
       }
     );
 
-    //log internal server error
+    // Internal Server Error
     if ((checkoutSession as any).statusCode === 500) {
       console.error((checkoutSession as any).message);
       return;
     }
 
-    // Redirect to Checkout.
+    // Redirect to checkout
     const stripe = await getStripe();
     const { error } = await stripe!.redirectToCheckout({
       // Make the id field from the Checkout Session creation API response
@@ -46,6 +54,7 @@ function checkout() {
       // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
       sessionId: checkoutSession.id,
     });
+
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
     // using `error.message`.
@@ -53,15 +62,6 @@ function checkout() {
 
     setLoading(false);
   };
-
-  useEffect(() => {
-    const groupedItems = items.reduce((results, item) => {
-      (results[item._id] = results[item._id] || []).push(item);
-      return results;
-    }, {} as { [key: string]: Product[] });
-
-    setGroupedItemsInBasket(groupedItems);
-  }, [items]);
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#E7ECEE]">
@@ -96,8 +96,7 @@ function checkout() {
                 <div className="pb-4">
                   <div className="flex justify-between">
                     <p>Subtotal</p>
-                    <p>
-                     ${basketTotal}
+                    <p>${basketTotal}
                       {/* <Currency quantity={basketTotal} currency="USD" /> */}
                     </p>
                   </div>
@@ -148,8 +147,7 @@ function checkout() {
                   <div className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-200 p-8 py-12 md:order-2">
                     <h4 className="mb-4 flex flex-col text-xl font-semibold">
                       Pay in full
-                      <span>
-                      ${basketTotal}
+                      <span> ${basketTotal}
                         {/* <Currency quantity={basketTotal} currency="USD" /> */}
                       </span>
                     </h4>
@@ -172,4 +170,4 @@ function checkout() {
   );
 }
 
-export default checkout;
+export default Checkout;
