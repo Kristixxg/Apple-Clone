@@ -1,27 +1,40 @@
 #Apple Clone
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Welcome to an Apple.com inspired ecommerce website built using Next.js and Tailwind CSS. This site has implemented cart functionality using Redux as well as checkout functionality using Stripe Checkout. Happy shopping!
+
 
 ## Deployment
+Application deployed on Vercel: [Click Here](https://apple-clone-tan-seven.vercel.app)
 
-[Deployed Link](https://apple-clone-kg.herokuapp.com/)
+
+## Installation
+Installation is not required for this application. 
 
 ## Credits
 
-| 📚 APIs Used|
-| :------------- |
-| Stripe|
+| 📚 APIs Used |
+| :----------- |
+![Stripe](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)
 
 
-|  📒 Others|
+| 🔎 Technologies|
 | :------------- |
-| Sanity.io| 
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
+ ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+Sanity.io
+
+
 
 
 ## License
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2022 Kristy Guo
+Copyright (c) 2023 Kristy Guo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
